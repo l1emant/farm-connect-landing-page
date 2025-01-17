@@ -1,25 +1,52 @@
-// Initialize AOS (Animate On Scroll)
+// Initialize AOS
 AOS.init({
     duration: 800,
-    easing: 'ease',
-    once: true,
-    offset: 100
+    offset: 100,
+    once: true
 });
 
 // Header scroll effect
 const header = document.querySelector('.header');
-let lastScroll = 0;
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelector('.nav-links');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
+    if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
+});
+
+// Mobile menu toggle
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-container')) {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu after clicking a link
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+    });
 });
 
 // Stats Counter Animation
@@ -60,20 +87,6 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// Smooth Scrolling for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
 // Feature Cards Hover Effect
 const featureCards = document.querySelectorAll('.feature-card');
 
@@ -86,12 +99,6 @@ featureCards.forEach(card => {
         card.style.transform = 'translateY(0)';
     });
 });
-
-// Mobile Navigation Toggle
-const mobileNavToggle = () => {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-};
 
 // Form Validation (for when we add forms)
 const validateForm = (form) => {
