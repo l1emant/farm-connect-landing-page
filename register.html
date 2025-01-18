@@ -5,97 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Farm Connect</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="auth-page">
-    <div class="auth-container">
-        <div class="auth-form-container">
-            <a href="index.html" class="auth-logo">FarmConnect</a>
+<body class="form-page">
+    <div class="form-container">
+        <div class="form-side">
             <h2>Create Account</h2>
-            <p class="auth-subtitle">Join the farming revolution</p>
+            <p>Join Farm Connect today</p>
             
-            <form id="registerForm" class="auth-form" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <div class="input-group">
-                            <i class="fas fa-user"></i>
-                            <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <div class="input-group">
-                            <i class="fas fa-phone"></i>
-                            <input type="tel" id="phone" name="phone" required placeholder="Enter phone number">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <div class="input-group">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="userType">I am a</label>
-                    <div class="input-group">
-                        <i class="fas fa-users"></i>
-                        <select id="userType" name="userType" required>
-                            <option value="">Select user type</option>
-                            <option value="farmer">Farmer</option>
-                            <option value="warehouse">Warehouse Owner</option>
-                            <option value="buyer">Buyer</option>
-                        </select>
-                    </div>
+            <form class="login-form">
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                    <i class="fas fa-user"></i>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="password" name="password" required placeholder="Create password">
-                            <i class="fas fa-eye-slash password-toggle"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm</label>
-                        <div class="input-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm password">
-                            <i class="fas fa-eye-slash password-toggle"></i>
-                        </div>
-                    </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" required>
+                    <i class="fas fa-envelope"></i>
                 </div>
                 
-                <div class="form-group terms">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="terms" required>
-                        <span class="checkmark"></span>
-                        I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
-                    </label>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                    <i class="fas fa-lock"></i>
                 </div>
-                
-                <button type="submit" class="btn btn-primary auth-btn">
-                    <span class="btn-text">Create Account</span>
-                    <div class="spinner"></div>
-                </button>
+
+                <div class="input-group">
+                    <select required>
+                        <option value="" disabled selected>Select User Type</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="warehouse">Warehouse Owner</option>
+                    </select>
+                    <i class="fas fa-users"></i>
+                </div>
+
+                <button type="submit" class="form-button">Sign Up</button>
             </form>
-            
-            <p class="auth-redirect">
+
+            <p class="form-text">
                 Already have an account? <a href="login.html">Login</a>
             </p>
         </div>
+        
+        <div class="image-side">
+            <div class="overlay"></div>
+            <div class="image-content">
+                <h1>Welcome to Farm Connect</h1>
+                <p>Join our community of farmers and warehouse owners</p>
+            </div>
+        </div>
     </div>
-    
-    <script src="js/auth.js"></script>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account created successfully!');
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>

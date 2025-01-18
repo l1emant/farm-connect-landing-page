@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Farm Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="form-page">
+    <div class="form-container">
+        <!-- Left Side - Image Section -->
+        <div class="form-image">
+            <img src="images/hero-bg.jpg" alt="Farm Connect Background">
+            <div class="image-content">
+                <h2>Transform Your Farming Business</h2>
+                <p>Join Farm Connect to access smart storage solutions, connect with trusted warehouses, and grow your agricultural business.</p>
+            </div>
+        </div>
+
+        <!-- Right Side - Form Section -->
+        <div class="form-section">
+            <div class="form-header">
+                <a href="index.html" class="form-logo">
+                    <i class="fas fa-leaf"></i>
+                    FarmConnect
+                </a>
+                <h1 class="form-title">Create Your Account</h1>
+                <p class="form-subtitle">Join the farming revolution today</p>
+            </div>
+
+            <form id="signupForm" novalidate>
+                <!-- Name Fields -->
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="input-group">
+                        <input type="text" id="firstName" class="form-control" name="firstName" required 
+                               placeholder="Enter your first name">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <div class="input-group">
+                        <input type="text" id="lastName" class="form-control" name="lastName" required 
+                               placeholder="Enter your last name">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-group">
+                        <input type="email" id="email" class="form-control" name="email" required 
+                               placeholder="Enter your email address">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </div>
+
+                <!-- User Type Selection -->
+                <div class="form-group">
+                    <label for="userType">I am a</label>
+                    <div class="input-group">
+                        <select id="userType" class="form-control" name="userType" required>
+                            <option value="">Select your role</option>
+                            <option value="farmer">Farmer</option>
+                            <option value="warehouse">Warehouse Owner</option>
+                            <option value="buyer">Buyer</option>
+                        </select>
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+
+                <!-- Password Fields -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="password" class="form-control" name="password" required 
+                               placeholder="Create a strong password">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" id="confirmPassword" class="form-control" name="confirmPassword" required 
+                               placeholder="Confirm your password">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-btn">
+                    <span class="btn-text">Create Account</span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+
+            <!-- Form Footer -->
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            
+            // Form Validation
+            const validateForm = () => {
+                let isValid = true;
+                const fields = form.querySelectorAll('.form-control');
+                
+                fields.forEach(field => {
+                    field.classList.remove('error');
+                    const errorMsg = field.parentElement.querySelector('.error-message');
+                    if (errorMsg) errorMsg.remove();
+
+                    if (!field.value.trim()) {
+                        showError(field, 'This field is required');
+                        isValid = false;
+                    } else if (field.type === 'email' && !isValidEmail(field.value)) {
+                        showError(field, 'Please enter a valid email address');
+                        isValid = false;
+                    } else if (field.id === 'password' && field.value.length < 8) {
+                        showError(field, 'Password must be at least 8 characters long');
+                        isValid = false;
+                    } else if (field.id === 'confirmPassword' && field.value !== form.querySelector('#password').value) {
+                        showError(field, 'Passwords do not match');
+                        isValid = false;
+                    }
+                });
+
+                return isValid;
+            };
+
+            // Show Error Message
+            const showError = (field, message) => {
+                field.classList.add('error');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.textContent = message;
+                field.parentElement.appendChild(errorDiv);
+            };
+
+            // Email Validation
+            const isValidEmail = (email) => {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            };
+
+            // Form Submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const submitBtn = form.querySelector('.form-btn');
+                submitBtn.classList.add('loading');
+
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Success - redirect to login
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    console.error('Registration failed:', error);
+                } finally {
+                    submitBtn.classList.remove('loading');
+                }
+            });
+
+            // Real-time validation
+            form.querySelectorAll('.form-control').forEach(field => {
+                field.addEventListener('input', () => {
+                    field.classList.remove('error');
+                    const errorMsg = field.parentElement.querySelector('.error-message');
+                    if (errorMsg) errorMsg.remove();
+                });
+            });
+
+            // Password visibility toggle
+            const togglePassword = (field) => {
+                const type = field.getAttribute('type');
+                field.setAttribute('type', type === 'password' ? 'text' : 'password');
+            };
+
+            document.querySelectorAll('input[type="password"]').forEach(field => {
+                const toggleIcon = document.createElement('i');
+                toggleIcon.className = 'fas fa-eye password-toggle';
+                toggleIcon.style.position = 'absolute';
+                toggleIcon.style.right = '1rem';
+                toggleIcon.style.cursor = 'pointer';
+                toggleIcon.style.opacity = '0.5';
+                field.parentElement.appendChild(toggleIcon);
+
+                toggleIcon.addEventListener('click', () => {
+                    togglePassword(field);
+                    toggleIcon.className = `fas fa-eye${field.type === 'password' ? '' : '-slash'} password-toggle`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
