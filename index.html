@@ -8,41 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="Farm Connect - Connecting farmers with warehouses for efficient storage solutions">
+    <meta name="keywords" content="farm storage, warehouse, agriculture, farming">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="css/style.css">
 </head>
 <body>
     <header class="header">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-leaf"></i>
-                FarmConnect
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo-svg.svg" alt="Farm Connect Logo" height="40"> 
             </a>
-            <nav>
+            <nav role="navigation" aria-label="Main navigation">
                 <ul class="nav-links">
-                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="login.html" class="nav-link">Login</a></li>
-                    <li><a href="register.html" class="nav-btn">Get Started <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
                 </ul>
                 <div class="mobile-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <button aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section class="hero" style="background-image: url('images/hero-bg.jpg');">
+    <section class="hero">
+        <div class="hero-background"></div>
         <div class="container hero-container">
             <div class="hero-content">
                 <h1 data-aos="fade-up">
                     <span class="highlight">Revolutionizing</span>
-                    Farm Storage Solutions
+                    the flow of Agricultural Storage
                 </h1>
-                <p data-aos="fade-up" data-aos-delay="100">Connect with trusted warehouses, manage your inventory, and grow your farming business with our innovative platform.</p>
+                <p data-aos="fade-up" data-aos-delay="100">Skip the middle man,and maximize your profits. store your harvest. securely and directly sell crop at mandis</p>
                 <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
                     <a href="register.html" class="hero-btn primary">
-                        Get Started <i class="fas fa-arrow-right"></i>
+                        Sign Up <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -51,39 +60,76 @@
 
     <section id="features" class="features">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Empowering Farmers with Digital Solutions</h2>
-                <p>Discover how Farm Connect transforms your agricultural business</p>
+            <div class="features-content">
+                <h2>Why Choose Farm Connect?</h2>
+                <p>Experience the future of agricultural storage with our innovative platform that connects farmers directly with warehouse owners.</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-warehouse feature-icon"></i>
-                    <h3>Smart Warehouse Search</h3>
-                    <p>Find and book nearby warehouses with real-time availability and competitive rates</p>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Real-time Availability</h3>
+                        <p>Check warehouse space availability and book instantly without delays.</p>
+                    </div>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-exchange-alt feature-icon"></i>
-                    <h3>Direct Market Access</h3>
-                    <p>Connect directly with buyers and get better prices for your produce</p>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Replace Middleman</h3>
+                        <p>Reducing the extra cost middleman making it cost effective.</p>
+                    </div>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-truck feature-icon"></i>
-                    <h3>Transport Solutions</h3>
-                    <p>Book reliable transportation services for your crops with real-time tracking</p>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Quality Assurance</h3>
+                        <p>All the warehouses are verified images and ratings are available of godowns.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Inventory Management</h3>
+                        <p>Track your stored crops and manage inventory efficiently.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Direct Market Access</h3>
+                        <p>Connect directly with Mandis and get better price for your produce.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Storage Tips</h3>
+                        <p>Get helpful storage suggestions based on your crop type and season to maintain produce quality.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Farming Business?</h2>
-            <p>Join thousands of farmers and warehouse owners who are already benefiting from our platform. Start your journey towards smarter farming today.</p>
-            <div class="cta-buttons">
-                <a href="register.html" class="cta-btn primary">
-                    Get Started <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your flow of storage solutions</h2>
+            <p>Start your journey and connect smartely</p>
+            <a href="register.html" class="cta-btn">
+                Sign Up <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
@@ -91,14 +137,9 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-section">
-                    <h3>About Farm Connect</h3>
-                    <p>Revolutionizing farm storage solutions with innovative technology. We connect farmers with reliable storage facilities to help them grow their business.</p>
-                </div>
-                <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -108,8 +149,16 @@
                     <ul class="footer-links">
                         <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
                         <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
-                        <li>123 Farm Street, Rural Area, Country</li>
                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -119,6 +168,10 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/scroll.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

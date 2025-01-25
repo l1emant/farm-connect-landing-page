@@ -8,25 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="Learn more about Farm Connect and our mission">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="css/style.css">
 </head>
 <body>
-    <header class="header scrolled">
+    <header class="header">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-leaf"></i>
-                FarmConnect
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo-svg.svg" alt="Farm Connect Logo" height="40"> 
             </a>
-            <nav>
+            <nav role="navigation" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="login.html" class="nav-link">Login</a></li>
-                    <li><a href="register.html" class="nav-btn">Get Started <i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
                 </ul>
                 <div class="mobile-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <button aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -64,15 +70,10 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-section">
-                    <h3>About Farm Connect</h3>
-                    <p>Revolutionizing farm storage solutions with innovative technology. We connect farmers with reliable storage facilities to help them grow their business.</p>
-                </div>
-                <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="#features">Features</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -81,17 +82,28 @@
                     <ul class="footer-links">
                         <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
                         <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
-                        <li>123 Farm Street, Rural Area, Country</li>
                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Farm Connect. All rights reserved.</p>
+                <p>&copy; 2025 Farm Connect. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/scroll.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

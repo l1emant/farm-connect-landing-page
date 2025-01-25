@@ -125,3 +125,13 @@ document.querySelectorAll('form').forEach(form => {
         }
     });
 });
+
+// Add mobile menu functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.querySelector('.mobile-menu button');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+});

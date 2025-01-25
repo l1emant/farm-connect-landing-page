@@ -70,16 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.classList.add('loading');
 
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // Reset form
-            form.reset();
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
             
-            // Show success message or redirect
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Registration failed');
+            }
+            
             window.location.href = 'login.html';
         } catch (error) {
-            console.error('Registration failed:', error);
+            showError('An error occurred. Please try again.');
         } finally {
             submitButton.classList.remove('loading');
         }

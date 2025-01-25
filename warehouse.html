@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouses - Farm Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="Farm Connect - Find and book warehouses for your agricultural storage needs">
+    <meta name="keywords" content="farm storage, warehouse, agriculture, farming">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo-svg.svg" alt="Farm Connect Logo" height="40">
+            </a>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <button aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="warehouse-filters">
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="crop-type">Crop Type</label>
+                        <select id="crop-type">
+                            <option value="">All Crops</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="rice">Rice</option>
+                            <option value="corn">Corn</option>
+                            <option value="soybean">Soybean</option>
+                            <option value="pulses">Pulses</option>
+                            <option value="cotton">Cotton</option>
+                            <option value="sugarcane">Sugarcane</option>
+                            <option value="oilseeds">Oilseeds</option>
+                            <option value="vegetables">Vegetables</option>
+                            <option value="fruits">Fruits</option>
+                            <option value="spices">Spices</option>
+                            <option value="tea">Tea</option>
+                            <option value="coffee">Coffee</option>
+                            <option value="jute">Jute</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="">All Locations</option>
+                            <option value="delhi">Delhi NCR</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="pune">Pune</option>
+                            <option value="ahmedabad">Ahmedabad</option>
+                            <option value="jaipur">Jaipur</option>
+                            <option value="lucknow">Lucknow</option>
+                            <option value="chandigarh">Chandigarh</option>
+                            <option value="indore">Indore</option>
+                            <option value="bhopal">Bhopal</option>
+                            <option value="patna">Patna</option>
+                            <option value="ludhiana">Ludhiana</option>
+                            <option value="agra">Agra</option>
+                            <option value="nashik">Nashik</option>
+                            <option value="kanpur">Kanpur</option>
+                            <option value="nagpur">Nagpur</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="capacity">Min Available Capacity (tons)</label>
+                        <input type="number" id="capacity" min="0" placeholder="Enter minimum capacity">
+                    </div>
+                    <div class="filter-item">
+                        <label for="rating">Min Rating</label>
+                        <select id="rating">
+                            <option value="">Any Rating</option>
+                            <option value="4">4+ Stars</option>
+                            <option value="3">3+ Stars</option>
+                            <option value="2">2+ Stars</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warehouse-grid">
+                <!-- Warehouse Card 1 -->
+                <div class="warehouse-card" data-aos="fade-up">
+                    <img src="images/warehouse1.jpg" alt="Modern Storage Facility" class="warehouse-image">
+                    <div class="warehouse-content">
+                        <h3 class="warehouse-title">Modern Storage Facility</h3>
+                        <div class="warehouse-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Delhi NCR
+                        </div>
+                        <div class="warehouse-details">
+                            <div class="detail-item">
+                                <div class="capacity-indicator">
+                                    <div class="capacity-circle">
+                                        <div class="capacity-fill" style="height: 70%;"></div>
+                                        <div class="capacity-text">
+                                            <div class="capacity-percentage">70%</div>
+                                            <div class="capacity-label">Full</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="capacity-details">
+                                    <div>Used: <span>3500</span> tons</div>
+                                    <div>Available: <span>1500</span> tons</div>
+                                    <div>Total: <span>5000</span> tons</div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Crops</span>
+                                <span class="detail-value">Wheat, Rice</span>
+                            </div>
+                        </div>
+                        <div class="warehouse-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span>4.5 (120 reviews)</span>
+                        </div>
+                        <div class="warehouse-cta">
+                            <a href="#" class="warehouse-btn btn-primary">Book Now</a>
+                            <a href="#" class="warehouse-btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warehouse Card 2 -->
+                <div class="warehouse-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/warehouse2.jpg" alt="Premium Storage Solutions" class="warehouse-image">
+                    <div class="warehouse-content">
+                        <h3 class="warehouse-title">Premium Storage Solutions</h3>
+                        <div class="warehouse-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Mumbai
+                        </div>
+                        <div class="warehouse-details">
+                            <div class="detail-item">
+                                <div class="capacity-indicator">
+                                    <div class="capacity-circle">
+                                        <div class="capacity-fill" style="height: 40%;"></div>
+                                        <div class="capacity-text">
+                                            <div class="capacity-percentage">40%</div>
+                                            <div class="capacity-label">Full</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="capacity-details">
+                                    <div>Used: <span>3200</span> tons</div>
+                                    <div>Available: <span>4800</span> tons</div>
+                                    <div>Total: <span>8000</span> tons</div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Crops</span>
+                                <span class="detail-value">All Types</span>
+                            </div>
+                        </div>
+                        <div class="warehouse-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>5.0 (89 reviews)</span>
+                        </div>
+                        <div class="warehouse-cta">
+                            <a href="#" class="warehouse-btn btn-primary">Book Now</a>
+                            <a href="#" class="warehouse-btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warehouse Card 3 -->
+                <div class="warehouse-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/warehouse3.jpg" alt="Eco-Friendly Storage" class="warehouse-image">
+                    <div class="warehouse-content">
+                        <h3 class="warehouse-title">Eco-Friendly Storage</h3>
+                        <div class="warehouse-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Bangalore
+                        </div>
+                        <div class="warehouse-details">
+                            <div class="detail-item">
+                                <div class="capacity-indicator">
+                                    <div class="capacity-circle">
+                                        <div class="capacity-fill" style="height: 90%;"></div>
+                                        <div class="capacity-text">
+                                            <div class="capacity-percentage">90%</div>
+                                            <div class="capacity-label">Full</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="capacity-details">
+                                    <div>Used: <span>2700</span> tons</div>
+                                    <div>Available: <span>300</span> tons</div>
+                                    <div>Total: <span>3000</span> tons</div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Crops</span>
+                                <span class="detail-value">Organic Only</span>
+                            </div>
+                        </div>
+                        <div class="warehouse-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span>4.0 (75 reviews)</span>
+                        </div>
+                        <div class="warehouse-cta">
+                            <a href="#" class="warehouse-btn btn-primary">Book Now</a>
+                            <a href="#" class="warehouse-btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Farm Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/warehouse.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+</body>
+</html>
