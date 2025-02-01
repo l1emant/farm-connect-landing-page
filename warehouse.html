@@ -24,7 +24,8 @@
             <nav role="navigation" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html#features" class="nav-link">Features</a></li>
-                    <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
+                    <li><a href="warehouse.html" class="nav-link active">Warehouses</a></li>
+                    <li><a href="crop-price.html" class="nav-link">Crop Price</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="login.html" class="nav-link">Login</a></li>
                     <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
@@ -39,6 +40,16 @@
             </nav>
         </div>
     </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-container">
+                <a href="index.html" class="breadcrumb-item">Home <i class="fas fa-chevron-right"></i></a>
+                <span class="breadcrumb-item">Warehouses</span>
+            </div>
+        </div>
+    </div>
 
     <section class="section" style="padding-top: 120px;">
         <div class="container">
@@ -260,7 +271,9 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#features">Features</a></li>
+                        <li><a href="warehouse.html" class="active">Warehouses</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="crop-price.html">Crop Price Checker</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -277,28 +290,9 @@
                         <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Farm Connect. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/scroll.js"></script>
-    <script src="js/warehouse.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
-    </script>
-</body>
-</html>
             <div class="footer-bottom">
                 <p>&copy; 2025 Farm Connect. All rights reserved.</p>
             </div>

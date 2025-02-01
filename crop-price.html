@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Price - Farm Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="Farm Connect - Check latest crop prices in mandis">
+    <meta name="keywords" content="farm prices, crop rates, mandi prices, agriculture">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        .crop-price-container {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0 60px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-color) 100%);
+        }
+        .price-card {
+            background: var(--white);
+            border-radius: 30px;
+            box-shadow: 0 7px 20px rgba(102, 67, 67, 0.05),
+                       0 4px 12px rgba(102, 67, 67, 0.08);
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .price-card::after {
+            content: "";
+            border-radius: 30px;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 15px 30px rgba(102, 67, 67, 0.1),
+                       0 8px 20px rgba(102, 67, 67, 0.15);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .price-card:hover {
+            transform: translateY(-8px);
+        }
+        .price-card:hover::after {
+            opacity: 1;
+        }
+        .price-icon {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            opacity: 0.9;
+        }
+        .price-card h3 {
+            color: var(--text-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .price-card p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .check-price-btn {
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 4px 15px rgba(102, 67, 67, 0.2);
+        }
+        .check-price-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 67, 67, 0.25);
+        }
+        .check-price-btn i {
+            transition: var(--transition);
+        }
+        .check-price-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .crop-price-container {
+                padding: 40px 1rem;
+                min-height: calc(100vh - 60px);
+            }
+            .price-card {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem;
+            }
+            .price-card h3 {
+                font-size: 1.8rem;
+            }
+            .price-icon {
+                font-size: 20px;
+            }
+            .check-price-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo-svg.svg" alt="Farm Connect Logo" height="40"> 
+            </a>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
+                    <li><a href="crop-price.html" class="nav-link active">Crop Price</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                    <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <button aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-container">
+                <a href="index.html" class="breadcrumb-item">Home <i class="fas fa-chevron-right"></i></a>
+                <span class="breadcrumb-item">Crop Price</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <section class="crop-price-container">
+        <div class="container">
+            <div class="price-card" data-aos="fade-up">
+                <i class="fas fa-chart-line price-icon"></i>
+                <h3>Check Latest Mandi Prices</h3>
+                <p>
+                    Check the latest crop prices and get insights into the latest prices in mandis. Stay updated with real-time market rates to make informed decisions about your produce.
+                </p>
+                <button class="check-price-btn">
+                    Check Price
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="warehouse.html">Warehouses</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="crop-price.html" class="active">Crop Price Checker</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Farm Connect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+</body>
+</html>
