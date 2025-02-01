@@ -1,0 +1,17 @@
+type BookingData = record {
+    farmerId: text;
+    warehouseId: text;
+    storageDate: text;
+    status: text;
+};
+
+type BookingResult = variant {
+    ok: BookingData;
+    err: text;
+};
+
+service : {
+    createBooking: (BookingData) -> (BookingResult);
+    getBooking: (text) -> (opt BookingData) query;
+    updateBookingStatus: (text, text) -> (BookingResult);
+};
