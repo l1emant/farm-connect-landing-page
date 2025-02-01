@@ -127,10 +127,25 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Transform Your flow of storage solutions</h2>
-            <p>Start your journey and connect smartely</p>
+            <p>Start your Journey and Connect Smartly</p>
             <a href="register.html" class="cta-btn">
                 Sign Up <i class="fas fa-arrow-right"></i>
             </a>
+        </div>
+    </section>
+
+    <section class="blockchain-cta" data-aos="fade-up">
+        <div class="container">
+            <h2>Secure Blockchain Booking</h2>
+            <div class="booking-form">
+                <input type="text" id="farmerId" placeholder="Farmer ID" required>
+                <input type="text" id="warehouseId" placeholder="Warehouse ID" required>
+                <input type="date" id="date" required>
+                <button onclick="bookWarehouse()" class="cta-btn">
+                    <i class="fas fa-lock"></i> Book via ICP Blockchain
+                </button>
+            </div>
+            <div id="bookings" class="blockchain-results"></div>
         </div>
     </section>
 
@@ -149,7 +164,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li><a href="tel:+1234567890">+91 83708-34337</a></li>
                         <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
                     </ul>
                 </div>
@@ -175,5 +190,47 @@
         AOS.init();
     </script>
     <script src="js/main.js" defer></script>
+
+    <script type="module">
+        import { Actor, HttpAgent } from "https://cdn.jsdelivr.net/npm/@dfinity/agent@0.24.3/+esm";
+        
+        // Initialize agent
+        const agent = new HttpAgent({ 
+            host: "http://127.0.0.1:4943",
+            fetchOptions: { mode: 'no-cors' }
+        });
+
+        // Replace with your canister ID
+        const canisterId = "bkyz2-fmaaa-aaaaa-qaaaq-cai";
+
+        // Create actor
+        const bookingCanister = Actor.createActor(
+            ({ IDL }) => ({
+                bookWarehouse: IDL.Func([IDL.Text, IDL.Text, IDL.Text], [IDL.Text], []),
+                getBookings: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, IDL.Record({
+                    farmerId: IDL.Text,
+                    warehouseId: IDL.Text,
+                    date: IDL.Text
+                })))], ['query']),
+            }),
+            { agent, canisterId }
+        );
+
+        // Attach to window
+        window.bookWarehouse = async () => {
+            try {
+                const farmerId = document.getElementById("farmerId").value;
+                const warehouseId = document.getElementById("warehouseId").value;
+                const date = document.getElementById("date").value;
+                
+                const result = await bookingCanister.bookWarehouse(farmerId, warehouseId, date);
+                alert("Blockchain Booking Successful!\nTransaction ID: " + result);
+                console.log("ICP Transaction:", result);
+            } catch (error) {
+                console.error("Booking Failed:", error);
+                alert("Booking Failed! Check console for details.");
+            }
+        };
+    </script>
 </body>
 </html>
