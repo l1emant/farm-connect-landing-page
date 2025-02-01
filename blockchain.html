@@ -192,6 +192,47 @@
         </div>
     </section>
 
+    <!-- ICP Code -->
+    <script type="module">
+  import { Actor, HttpAgent } from "https://cdn.jsdelivr.net/npm/@dfinity/agent@0.24.3/+esm";
+
+  // Initialize agent for ICP mainnet
+  const agent = new HttpAgent({ 
+    host: "https://ic0.app" 
+  });
+
+  // Replace with YOUR_BACKEND_CANISTER_ID (from `dfx canister --network ic id <canister_name>`)
+  const canisterId = "36dh2-aiaaa-aaaad-aajna-cai";
+
+  // Create actor to interact with the canister
+  const bookingCanister = Actor.createActor(
+    ({ IDL }) => ({
+      bookWarehouse: IDL.Func([IDL.Text, IDL.Text, IDL.Text], [IDL.Text], []),
+      getBookings: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, IDL.Record({
+        farmerId: IDL.Text,
+        warehouseId: IDL.Text,
+        date: IDL.Text
+      })))], ['query']),
+    }),
+    { agent, canisterId }
+  );
+
+  // Attach to window for HTML buttons
+  window.bookWarehouse = async () => {
+    try {
+      const farmerId = document.getElementById("farmerId").value;
+      const warehouseId = document.getElementById("warehouseId").value;
+      const date = document.getElementById("date").value;
+      
+      const result = await bookingCanister.bookWarehouse(farmerId, warehouseId, date);
+      alert("Booking stored on ICP blockchain!\nTransaction ID: " + result);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Booking failed. Check console for details.");
+    }
+  };
+</script>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
