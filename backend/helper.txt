@@ -1,0 +1,10 @@
+Register ->  by default Role : User
+Login ->  Cookie (holds user authentication information)
+Homepage -> Authenticated Page that can be accessed when logged in
+Another Special Page that can be accessed only by an admin
+
+npm i nodemon --save-dev
+
+npm i bcryptjs
+
+npm i jsonwebtoken
