@@ -26,6 +26,7 @@
                     <li><a href="index.html#features" class="nav-link">Features</a></li>
                     <li><a href="warehouse.html" class="nav-link">Warehouses</a></li>
                     <li><a href="crop-price.html" class="nav-link">Crop Price</a></li>
+                    <li><a href="blockchain.html" class="nav-link">Blockchain</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="login.html" class="nav-link">Login</a></li>
                     <li><a href="register.html" class="nav-btn">sign up <i class="fas fa-arrow-right"></i></a></li>
@@ -126,26 +127,50 @@
 
     <section class="cta">
         <div class="container">
-            <h2>Ready to Transform Your flow of storage solutions</h2>
-            <p>Start your Journey and Connect Smartly</p>
-            <a href="register.html" class="cta-btn">
-                Sign Up <i class="fas fa-arrow-right"></i>
-            </a>
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Smart Storage Solutions with AI</h2>
+                <p>Get personalized recommendations for optimal storage conditions, timing, and pricing using our AI system</p>
+                <a href="https://farmconnect-storage-model.streamlit.app/" target="_blank" class="cta-btn ai-btn">
+                    Try AI Recommendations <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <section class="blockchain-cta" data-aos="fade-up">
         <div class="container">
-            <h2>Secure Blockchain Booking</h2>
-            <div class="booking-form">
-                <input type="text" id="farmerId" placeholder="Farmer ID" required>
-                <input type="text" id="warehouseId" placeholder="Warehouse ID" required>
-                <input type="date" id="date" required>
-                <button onclick="bookWarehouse()" class="cta-btn">
-                    <i class="fas fa-lock"></i> Book via ICP Blockchain
-                </button>
+            <div class="blockchain-preview">
+                <div class="preview-content">
+                    <h2>Secure Your Storage Space</h2>
+                    <p>Experience the future of agricultural storage with our decentralized blockchain solution. Powered by Internet Computer Protocol (ICP) for maximum security and transparency.</p>
+                    <div class="preview-features">
+                        <div class="preview-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Immutable Records</span>
+                        </div>
+                        <div class="preview-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Real-time Processing</span>
+                        </div>
+                    </div>
+                    <a href="blockchain.html" class="preview-btn">
+                        <span>Explore Blockchain Storage</span>
+                        <div class="btn-animation">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="preview-image">
+                    <div class="blockchain-illustration">
+                        <i class="fas fa-cubes"></i>
+                        <div class="floating-icons">
+                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-link"></i>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="bookings" class="blockchain-results"></div>
         </div>
     </section>
 
@@ -164,7 +189,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><a href="tel:+1234567890">+91 83708-34337</a></li>
+                        <li><a href="tel:+1234567890">+91 12345-00009</a></li>
                         <li><a href="mailto:info@farmconnect.com">info@farmconnect.com</a></li>
                     </ul>
                 </div>
